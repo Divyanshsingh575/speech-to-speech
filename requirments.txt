@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+langchain
+google-generativeai
+numpy
+pandas
+langchain-google-genai
