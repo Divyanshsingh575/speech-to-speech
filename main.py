@@ -1,12 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from routes.chat import router as chat_router
-from routes import speak
-
-
+from routes.chat import router as chat_router ,init_tts_model_ig, init_tts_model_en
 
 app = FastAPI()
+
+# ✅ Load TTS model once at startup
+@app.on_event("startup")
+def startup_event():
+    init_tts_model_ig()
+    init_tts_model_en()
+
+# Middleware setup
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -14,9 +18,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.include_router(chat_router)
-# app.include_router(speak.router)
 
+# Router setup
+app.include_router(chat_router)
 
 if __name__ == "__main__":
     import uvicorn

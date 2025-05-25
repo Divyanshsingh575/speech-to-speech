@@ -7,171 +7,346 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       display: flex;
       height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
-
     .sidebar {
-      width: 250px;
-      background: #f4f4f4;
-      padding: 20px;
-      border-right: 1px solid #ddd;
+      width: 280px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 25px 20px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
     }
-
     .chat-title {
-      font-weight: bold;
-      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 25px;
+      color: #2c3e50;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
+    .new-chat-btn {
+      padding: 12px 20px;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    .new-chat-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
     .chat-main {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
-      padding: 20px;
-      background: #ffffff;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      margin: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
-
     .chat-box {
       flex-grow: 1;
       overflow-y: auto;
-      padding-right: 10px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(5px);
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
     }
-
     .message {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      padding: 15px 20px;
+      border-radius: 20px;
+      max-width: 80%;
+      word-wrap: break-word;
+      animation: slideIn 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
-
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     .user {
-      text-align: right;
-      color: #2c3e50;
+      margin-left: auto;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      border-bottom-right-radius: 5px;
     }
-
     .bot {
-      text-align: left;
-      color: #27ae60;
+      margin-right: auto;
+      background: rgba(255, 255, 255, 0.9);
+      color: #2c3e50;
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      border-bottom-left-radius: 5px;
     }
-
     .input-area {
       display: flex;
-      border-top: 1px solid #ddd;
-      padding-top: 10px;
-      margin-top: 10px;
+      align-items: center;
+      gap: 15px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 25px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
-
+    .input-area select {
+      padding: 12px 15px;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 15px;
+      background: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .input-area select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
     .input-area textarea {
       flex-grow: 1;
-      padding: 10px;
+      padding: 15px 20px;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: 20px;
       resize: none;
-      font-size: 14px;
-      height: 60px;
+      font-size: 16px;
+      font-family: inherit;
+      background: white;
+      transition: all 0.3s ease;
+      min-height: 50px;
     }
-
+    .input-area textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
     .input-area button {
-      margin-left: 10px;
-      padding: 10px 15px;
-      font-size: 14px;
+      padding: 15px 20px;
+      border: none;
+      border-radius: 20px;
       cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      min-width: 60px;
     }
-
-    .chat-history {
-      font-size: 14px;
-      margin-bottom: 10px;
-      color: #333;
-      cursor: pointer;
+    .voice-btn {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
     }
-
-    .chat-history:hover {
-      text-decoration: underline;
+    .voice-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
     }
-
+    .voice-btn.active {
+      background: linear-gradient(45deg, #51cf66, #40c057);
+      animation: pulse 1.5s infinite;
+    }
+    .voice-btn.disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .send-btn {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    .send-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    /* Voice Overlay Styles */
     #voiceOverlay {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(255,255,255,0.95);
-      z-index: 999;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
       display: none;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
     }
-
     .voice-circle {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      background: #007bff;
-      animation: pulse 1.2s infinite;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      animation: voicePulse 1.2s infinite;
+      box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
     }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.3); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.6; }
+    .voice-circle.speaking {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+      box-shadow: 0 0 30px rgba(255, 107, 107, 0.6);
     }
-
-    #exitBtn {
-      margin-top: 20px;
-      padding: 8px 16px;
-      font-size: 14px;
-      background: #e74c3c;
+    .voice-circle.waiting {
+      background: linear-gradient(45deg, #ffc107, #ff8f00);
+      box-shadow: 0 0 30px rgba(255, 193, 7, 0.6);
+      animation: waitingPulse 2s infinite;
+    }
+    @keyframes voicePulse {
+      0% { transform: scale(1); box-shadow: 0 0 30px rgba(102, 126, 234, 0.6); }
+      50% { transform: scale(1.1); box-shadow: 0 0 50px rgba(102, 126, 234, 0.8); }
+      100% { transform: scale(1); box-shadow: 0 0 30px rgba(102, 126, 234, 0.6); }
+    }
+    @keyframes waitingPulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+    #voiceText {
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: 600;
       color: white;
+      text-align: center;
+    }
+    #closeOverlayBtn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
       border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    #exitBtn:hover {
-      background: #c0392b;
-    }
-
-    #interruptBtn {
-      margin-top: 12px;
-      padding: 6px 12px;
-      font-size: 14px;
-      background: #3498db;
       color: white;
-      border: none;
-      border-radius: 4px;
+      border-radius: 25px;
       cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+    #closeOverlayBtn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
     }
 
-    #interruptBtn:hover {
-      background: #2980b9;
+    /* Status indicator */
+    .status-indicator {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      color: white;
+      font-weight: 600;
+      z-index: 1000;
+      opacity: 0.9;
+    }
+    .status-listening {
+      background: linear-gradient(45deg, #51cf66, #40c057);
+    }
+    .status-speaking {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    }
+    .status-waiting {
+      background: linear-gradient(45deg, #ffc107, #ff8f00);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      .sidebar { width: 100%; padding: 15px; }
+      .chat-main { margin: 10px; padding: 15px; }
+      .input-area { flex-wrap: wrap; gap: 10px; }
+      .input-area select, .input-area textarea { width: 100%; }
+      .message { max-width: 95%; }
     }
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <div class="chat-title">Gemini Chat</div>
-    <div class="chat-history" onclick="resetChat()">+ New Chat</div>
+    <div class="chat-title">🤖 Gemini Chat</div>
+    <button class="new-chat-btn" onclick="resetChat()">+ New Chat</button>
   </div>
 
   <div class="chat-main">
     <div id="chatBox" class="chat-box"></div>
 
     <div class="input-area">
-      <textarea id="prompt" placeholder="Type your message..."></textarea>
-      <button onclick="startVoiceMode()">🎤</button>
-      <button onclick="sendPrompt(promptBox.value)">Send</button>
+      <select id="langMode">
+        <option value="en-en">English → English</option>
+        <option value="en-ig">English → Igbo</option>
+        <option value="ig-ig">Igbo → Igbo</option>
+      </select>
+      <textarea id="prompt" placeholder="Type your message..." rows="1"></textarea>
+      <button id="voiceBtn" class="voice-btn" onclick="toggleVoiceMode()">🎤</button>
+      <button class="send-btn" onclick="sendPrompt(promptBox.value)">Send</button>
     </div>
   </div>
 
+  <!-- Voice Overlay -->
   <div id="voiceOverlay">
-    <div class="voice-circle"></div>
-    <p style="margin-top: 15px; font-size: 18px;">🎙️ Listening... Speak now</p>
-    <button id="interruptBtn" onclick="interruptGemini()">🎙️ Speak Now</button>
-    <button id="exitBtn" onclick="closeVoiceMode()">❌ Exit Voice Mode</button>
+    <div id="voiceCircle" class="voice-circle">🎙️</div>
+    <div id="voiceText">Listening... Speak now</div>
+    <button id="closeOverlayBtn" onclick="stopVoiceMode()">Stop Voice Mode</button>
   </div>
+
+  <!-- Status Indicator -->
+  <div id="statusIndicator" class="status-indicator" style="display: none;"></div>
+
+  <!-- Ding sound -->
+  <audio id="dingSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
 
   <script>
     const chatBox = document.getElementById("chatBox");
     const promptBox = document.getElementById("prompt");
+    const langSelect = document.getElementById("langMode");
+    const voiceOverlay = document.getElementById("voiceOverlay");
+    const voiceBtn = document.getElementById("voiceBtn");
+    const voiceCircle = document.getElementById("voiceCircle");
+    const voiceText = document.getElementById("voiceText");
+    const statusIndicator = document.getElementById("statusIndicator");
+    const dingSound = document.getElementById("dingSound");
 
-    let isSpeaking = false;
     let voiceMode = false;
+    let isSpeaking = false;
+    let isListening = false;
+    let isWaitingForSpeech = false;
     let recognition;
+    let currentAudio = null;
+
+    function updateStatus(status, message) {
+      if (voiceMode) {
+        statusIndicator.style.display = 'block';
+        statusIndicator.className = `status-indicator status-${status}`;
+        statusIndicator.textContent = message;
+        
+        voiceText.textContent = message;
+        voiceCircle.className = `voice-circle ${status}`;
+        
+        if (status === 'speaking') {
+          voiceCircle.innerHTML = '🔊';
+        } else if (status === 'listening') {
+          voiceCircle.innerHTML = '🎙️';
+        } else if (status === 'waiting') {
+          voiceCircle.innerHTML = '⏳';
+        }
+      } else {
+        statusIndicator.style.display = 'none';
+      }
+    }
 
     function addMessage(content, sender) {
       const div = document.createElement("div");
@@ -183,107 +358,264 @@
 
     async function sendPrompt(prompt) {
       if (!prompt.trim()) return;
+
+      stopCurrentAudio();
+      stopListening();
+
+      isSpeaking = true;
+
+      // Removed processing message from here
+      updateStatus('speaking', 'AI is processing...');
+
+      promptBox.value = "";
       addMessage(prompt, "user");
 
-      const res = await fetch("http://127.0.0.1:8000/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt }),
-      });
+      const payload = {
+        prompt,
+        lang_mode: langSelect.value,
+      };
 
-      const data = await res.json();
-      addMessage(data.response, "bot");
-      speakText(data.response);
+      const isAudioResponse = voiceMode && ["en-en", "en-ig", "ig-ig"].includes(langSelect.value);
+
+
+      try {
+        // Fetch text response in parallel
+        const textResPromise = fetch("http://127.0.0.1:8000/chat", {
+          method: "POST",
+          headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({...payload, response_type: "text"}),
+        });
+
+        // Fetch audio response (if needed)
+        const audioResPromise = fetch("http://127.0.0.1:8000/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        // Handle text response first
+        const textRes = await textResPromise;
+        let botResponse = "";
+        if (textRes.ok) {
+          try {
+            const textData = await textRes.json();
+            botResponse = textData.response || textData.text || "";
+          } catch {
+            botResponse = "";
+          }
+        }
+        // Removed removal of processing message block here
+
+        if (!botResponse) botResponse = "[No response from Gemini]";
+        addMessage(botResponse, "bot");
+
+        // Then handle audio response
+        if (isAudioResponse) {
+          const audioRes = await audioResPromise;
+          const blob = await audioRes.blob();
+          const audioUrl = URL.createObjectURL(blob);
+          currentAudio = new Audio(audioUrl);
+
+          updateStatus('speaking', 'AI is speaking...');
+          currentAudio.play();
+
+          currentAudio.onended = () => {
+            URL.revokeObjectURL(audioUrl);
+            isSpeaking = false;
+            currentAudio = null;
+            if (voiceMode) {
+              isWaitingForSpeech = true;
+              updateStatus('waiting', 'Press SPACEBAR to speak');
+              setTimeout(() => {
+                if (isWaitingForSpeech && voiceMode && !isListening && !isSpeaking) {
+                  startListening();
+                }
+              }, 2000);
+            }
+          };
+
+          currentAudio.onerror = () => {
+            console.error("Audio playback error");
+            isSpeaking = false;
+            currentAudio = null;
+            if (voiceMode) {
+              isWaitingForSpeech = true;
+              updateStatus('waiting', 'Press SPACEBAR to speak');
+            }
+          };
+        } else {
+          isSpeaking = false;
+          if (voiceMode) {
+            isWaitingForSpeech = true;
+            updateStatus('waiting', 'Press SPACEBAR to speak');
+            setTimeout(() => {
+              if (isWaitingForSpeech && voiceMode && !isListening && !isSpeaking) {
+                startListening();
+              }
+            }, 1000);
+          }
+        }
+      } catch (error) {
+        console.error("Error sending message:", error);
+        addMessage("Error: Could not send message. Please check your connection.", "bot");
+        isSpeaking = false;
+        if (voiceMode) {
+          isWaitingForSpeech = true;
+          updateStatus('waiting', 'Press SPACEBAR to speak');
+        }
+      }
+    }
+
+
+
+
+
+    function stopCurrentAudio() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+    }
+
+    function stopListening() {
+      if (recognition && isListening) {
+        recognition.abort();
+        isListening = false;
+      }
     }
 
     function resetChat() {
       chatBox.innerHTML = "";
-    }
-
-    function closeVoiceMode() {
-      voiceMode = false;
-      document.getElementById("voiceOverlay").style.display = "none";
-      if (recognition) recognition.stop();
-      speechSynthesis.cancel();
-    }
-
-    function startVoiceMode() {
-      voiceMode = true;
-      document.getElementById("voiceOverlay").style.display = "flex";
-      startListening();
-    }
-
-    function interruptGemini() {
-      speechSynthesis.cancel();
+      stopCurrentAudio();
+      stopListening();
       isSpeaking = false;
-      if (recognition) recognition.abort();
-      startListening();
+      isWaitingForSpeech = false;
+      addMessage("Chat reset. How can I help you today?", "bot");
+      if (voiceMode) {
+        updateStatus('waiting', 'Press SPACEBAR to speak');
+      }
+    }
+
+    function toggleVoiceMode() {
+      voiceMode = !voiceMode;
+      if (voiceMode) {
+        voiceBtn.classList.add('active');
+        voiceOverlay.style.display = "flex";
+        isWaitingForSpeech = true;
+        updateStatus('waiting', 'Press SPACEBAR to speak');
+      } else {
+        stopVoiceMode();
+      }
+    }
+
+    function stopVoiceMode() {
+      voiceMode = false;
+      voiceBtn.classList.remove('active');
+      voiceOverlay.style.display = "none";
+      statusIndicator.style.display = 'none';
+      stopCurrentAudio();
+      stopListening();
+      isSpeaking = false;
+      isListening = false;
+      isWaitingForSpeech = false;
     }
 
     function startListening() {
-      if (!voiceMode) return;
-
-      if (isSpeaking) {
-        speechSynthesis.cancel();
-        isSpeaking = false;
+      if (isSpeaking || !voiceMode) {
+        console.log("Cannot start listening: AI is speaking or voice mode is off");
+        return;
       }
+
+      isWaitingForSpeech = false;
 
       if (!recognition) {
         recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.lang = 'en-IN';
+        recognition.continuous = false;
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
 
+        recognition.onstart = () => {
+          isListening = true;
+          updateStatus('listening', '🎙️ Listening... Speak now');
+          console.log("🎤 Mic started");
+        };
+
         recognition.onresult = async (event) => {
           const transcript = event.results[0][0].transcript;
-          if (!voiceMode) return;
-          recognition.abort();
+          updateStatus('speaking', `Processing: "${transcript}"`);
+          recognition.stop();
+          isListening = false;
           await sendPrompt(transcript);
         };
 
         recognition.onerror = (e) => {
-          if (e.error !== 'aborted' && voiceMode) {
-            setTimeout(() => startListening(), 1000);
+          console.warn("🎤 Speech error:", e.error);
+          updateStatus('waiting', `Error: ${e.error}. Press SPACEBAR to try again`);
+          recognition.abort();
+          isListening = false;
+          isWaitingForSpeech = true;
+          if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+            stopVoiceMode();
           }
         };
 
         recognition.onend = () => {
+          isListening = false;
+          console.log("🎙️ Mic stopped");
           if (voiceMode && !isSpeaking) {
-            startListening();
+            isWaitingForSpeech = true;
+            updateStatus('waiting', 'Press SPACEBAR to speak');
           }
         };
       }
 
+      recognition.lang = 'en-US'; // FIXED English input always
       recognition.start();
     }
 
-    function speakText(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-IN';
-      utterance.rate = 1;
-      utterance.pitch = 1;
-
-      isSpeaking = true;
-
-      utterance.onstart = () => {
-        if (recognition) recognition.abort();
-      };
-
-      utterance.onend = () => {
-        isSpeaking = false;
-        if (voiceMode) startListening();
-      };
-
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utterance);
-    }
-
+    // Keyboard shortcuts
     document.addEventListener("keydown", function (e) {
-      if (e.code === "Space" && voiceMode) {
+      if (e.code === "Space" && voiceMode && e.target !== promptBox) {
         e.preventDefault();
-        interruptGemini();
+
+        if (isSpeaking) {
+          stopCurrentAudio();
+          isSpeaking = false;
+          console.log("AI speech interrupted by spacebar");
+          updateStatus('waiting', 'Press SPACEBAR to speak');
+          startListening();
+          return;
+        }
+
+        if (isListening) {
+          recognition.abort();
+          isListening = false;
+          isWaitingForSpeech = true;
+          updateStatus('waiting', 'Press SPACEBAR to speak');
+          console.log("🛑 Mic manually stopped");
+        } else if (isWaitingForSpeech || (!isListening && !isSpeaking)) {
+          startListening();
+        }
+      }
+
+      if (e.key === "Enter" && !e.shiftKey && e.target === promptBox) {
+        e.preventDefault();
+        sendPrompt(promptBox.value);
       }
     });
+
+    // Auto resize textarea
+    promptBox.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+    });
+
+    // Initialize
+    addMessage("Hello! I'm Gemini Chat with voice support. How can I help you today?", "bot");
   </script>
 </body>
 </html>
